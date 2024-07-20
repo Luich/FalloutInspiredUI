@@ -1,0 +1,210 @@
+/* Terminal style font */
+:root {
+  font-family: "VT323", monospace;
+  font-weight: 400;
+  --primary-color: #ffd52c;
+  --secondary-color: #ff5c00;
+  --tertiary-color: #c72d04;
+  --background-color: #111;
+  scrollbar-color: var(--primary-color) var(--secondary-color);
+  font-size: clamp(18px, 3vw, 30px);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--background-color);
+  cursor: url("./assets/mouse.svg");
+}
+
+a,
+table > thead,
+table > tbody {
+  color: #ffd52c;
+}
+
+a {
+  text-decoration: none;
+}
+
+th {
+  width: 15rem;
+}
+
+tr {
+  cursor: default;
+}
+
+tbody tr:hover {
+  background: #ffd52c;
+  color: #000;
+}
+
+th,
+td {
+  padding-left: 1em;
+}
+
+img {
+  height: 22rem;
+  color-interpolation-filters: var(--primary-color);
+}
+
+/* Responsive layout */
+div.retro-container {
+  width: 90vw;
+  height: 90vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  overflow: hidden;
+  padding: 0.5rem;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  text-shadow: 0 0 0.5rem;
+  /* Scanline Effect */
+  mask-image: linear-gradient(to bottom, #0005 50%, #000 50%);
+  mask-size: 100% 2px;
+}
+
+header,
+footer {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+footer {
+  padding-top: 1rem;
+}
+
+main {
+  overflow: hidden;
+}
+
+section {
+  height: 100%;
+  overflow: hidden auto;
+  /* margin: 1rem 0; */
+}
+
+/* Old CRT Monitor Effect */
+@keyframes crtAnimation {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 0 10000%;
+  }
+}
+
+.old-crt-monitor {
+  box-shadow: inset 0px 0px 2rem;
+  background-image: linear-gradient(0deg, #0000 10%, #fff1 90%, #0000 100%);
+  animation: crtAnimation 100s linear infinite;
+  background-size: 100% 80%;
+}
+
+/* <!-- Red Alert --> */
+.alert {
+  animation: blink-bg 1s ease-out infinite;
+}
+@keyframes blink-bg {
+  0%,
+  60% {
+    text-shadow: 0 0 10.5rem;
+    color: var(--primary-color);
+    border-color: var(--primary-color) !important;
+  }
+  70%,
+  100% {
+    text-shadow: 0 0 20.5rem;
+    color: var(--tertiary-color);
+    border-color: var(--tertiary-color) !important;
+  }
+}
+
+/* Stile hover per le righe con classe .alert */
+tbody tr.alert:hover {
+  background: #f00; /* Cambia questo colore con quello desiderato */
+  color: #fff; /* Cambia questo colore con quello desiderato per il testo */
+}
+/* <!-- End Red Alert --> */
+
+.width-auto {
+  width: auto;
+}
+
+.width-65perc {
+  width: 65%;
+}
+
+.width-70perc {
+  width: 70%;
+}
+
+.float-right {
+  float: right;
+}
+
+.margin-5em-both-sides {
+  margin-left: 5em;
+  margin-right: 5em;
+}
+
+td,
+th {
+  border: 5px solid var(--primary-color) !important;
+}
+
+#crewTable,
+#stationTable,
+#dataTable1,
+#dataTable2 {
+  border-collapse: separate;
+  border-spacing: 10px;
+}
+
+#dataTable1,
+#dataTable2 {
+  max-width: 90%;
+}
+
+#dataTable2 {
+  border-collapse: separate;
+  table-layout: fixed;
+}
+
+#dataTable2 thead tr {
+  background: transparent;
+  color: #ffd52c;
+  display: block;
+  position: sticky;
+}
+
+#dataTable2 tbody {
+  display: block;
+  height: 20vh;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#dataTable2 th,
+#dataTable2 td {
+  width: calc(
+    100% / (number of columns)
+  ); /* Replace "number of columns" with the actual number */
+}
+
+.table-spacing {
+  border-spacing: 5px;
+}
